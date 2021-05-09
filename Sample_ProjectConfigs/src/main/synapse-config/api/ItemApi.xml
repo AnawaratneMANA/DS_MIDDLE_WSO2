@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/default" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <log level="custom">
+                <property name="message" value="Display Items"/>
+            </log>
+            <send>
+                <endpoint key="Items"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>
