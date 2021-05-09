@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/default" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
+<api context="/items" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET">
         <inSequence>
-            <log level="custom">
-                <property name="message" value="Display Items"/>
-            </log>
+            <log/>
             <send>
                 <endpoint key="Items"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/additems">
+        <inSequence>
+            <log/>
+            <send>
+                <endpoint key="AddItems"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/validateuser">
+        <inSequence>
+            <log/>
+            <send>
+                <endpoint key="validateUser"/>
             </send>
         </inSequence>
         <outSequence>

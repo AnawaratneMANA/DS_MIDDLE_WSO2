@@ -5,4 +5,10 @@
     <artifact name="ItemApi" groupId="com.example.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/ItemApi.xml</file>
     </artifact>
+    <artifact name="AddItems" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/AddItems.xml</file>
+    </artifact>
+    <artifact name="validateUser" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/validateUser.xml</file>
+    </artifact>
 </artifacts>
