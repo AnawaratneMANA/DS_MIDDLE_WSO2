@@ -15,14 +15,14 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.example.api</groupId>
-      <artifactId>ItemApi</artifactId>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>Items</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.example.endpoint</groupId>
-      <artifactId>Items</artifactId>
+      <groupId>com.example.api</groupId>
+      <artifactId>ItemApi</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
