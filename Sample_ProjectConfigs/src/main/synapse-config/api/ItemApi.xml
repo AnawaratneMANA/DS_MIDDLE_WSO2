@@ -12,21 +12,10 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" url-mapping="/additems">
+    <resource methods="POST" uri-template="/validate">
         <inSequence>
             <log/>
-            <send>
-                <endpoint key="AddItems"/>
-            </send>
-        </inSequence>
-        <outSequence>
-            <send/>
-        </outSequence>
-        <faultSequence/>
-    </resource>
-    <resource methods="POST" url-mapping="/validateuser">
-        <inSequence>
-            <log/>
+            <datamapper config="gov:datamapper/ValidateUserConfiguration.dmc" inputSchema="gov:datamapper/ValidateUserConfiguration_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/ValidateUserConfiguration_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/ValidateUserConfiguration_xsltStyleSheet.xml"/>
             <send>
                 <endpoint key="validateUser"/>
             </send>
@@ -34,6 +23,29 @@
         <outSequence>
             <send/>
         </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/payment">
+        <inSequence>
+            <log/>
+            <send>
+                <endpoint key="GetPaymentdetails"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/insertitems">
+        <inSequence>
+            <log/>
+            <datamapper config="gov:datamapper/InsertItemConfig.dmc" inputSchema="gov:datamapper/InsertItemConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/InsertItemConfig_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/InsertItemConfig_xsltStyleSheet.xml"/>
+            <send>
+                <endpoint key="InsertItems"/>
+            </send>
+        </inSequence>
+        <outSequence/>
         <faultSequence/>
     </resource>
 </api>
