@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/items" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET">
+<api context="/shopping" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="PUT GET" uri-template="/items/getitems">
         <inSequence>
             <log/>
             <send>
@@ -12,7 +12,7 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" uri-template="/validate">
+    <resource methods="POST" uri-template="/items/validateuser">
         <inSequence>
             <log/>
             <datamapper config="gov:datamapper/ValidateUserConfiguration.dmc" inputSchema="gov:datamapper/ValidateUserConfiguration_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/ValidateUserConfiguration_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/ValidateUserConfiguration_xsltStyleSheet.xml"/>
@@ -25,7 +25,7 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="GET" uri-template="/payment">
+    <resource methods="GET" uri-template="/items/getpayments">
         <inSequence>
             <log/>
             <send>
@@ -45,7 +45,9 @@
                 <endpoint key="InsertItems"/>
             </send>
         </inSequence>
-        <outSequence/>
+        <outSequence>
+            <send/>
+        </outSequence>
         <faultSequence/>
     </resource>
 </api>
