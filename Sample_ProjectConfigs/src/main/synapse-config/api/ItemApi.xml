@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/items" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET">
+    <resource methods="GET" uri-template="/getitems">
         <inSequence>
             <log/>
             <send>
@@ -12,7 +12,7 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" url-mapping="/additems">
+    <resource methods="POST" uri-template="/additems">
         <inSequence>
             <log/>
             <send>
@@ -24,11 +24,11 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" url-mapping="/validateuser">
+    <resource methods="POST" uri-template="/validateuser">
         <inSequence>
             <log/>
             <send>
-                <endpoint key="validateUser"/>
+                <endpoint key="Validate"/>
             </send>
         </inSequence>
         <outSequence>
