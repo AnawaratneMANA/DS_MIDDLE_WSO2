@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/items" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET">
+<api context="/shopping" name="ItemApi" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="PUT GET" uri-template="/items/getitems">
         <inSequence>
             <log/>
             <send>
@@ -12,11 +12,12 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" url-mapping="/additems">
+    <resource methods="POST" uri-template="/items/validateuser">
         <inSequence>
             <log/>
+            <datamapper config="gov:datamapper/ValidateUserConfiguration.dmc" inputSchema="gov:datamapper/ValidateUserConfiguration_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/ValidateUserConfiguration_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/ValidateUserConfiguration_xsltStyleSheet.xml"/>
             <send>
-                <endpoint key="AddItems"/>
+                <endpoint key="validateUser"/>
             </send>
         </inSequence>
         <outSequence>
@@ -24,11 +25,24 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="POST" url-mapping="/validateuser">
+    <resource methods="GET" uri-template="/items/getpayments">
         <inSequence>
             <log/>
             <send>
-                <endpoint key="validateUser"/>
+                <endpoint key="GetPaymentdetails"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/insertitems">
+        <inSequence>
+            <log/>
+            <datamapper config="gov:datamapper/InsertItemConfig.dmc" inputSchema="gov:datamapper/InsertItemConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/InsertItemConfig_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/InsertItemConfig_xsltStyleSheet.xml"/>
+            <send>
+                <endpoint key="InsertItems"/>
             </send>
         </inSequence>
         <outSequence>
